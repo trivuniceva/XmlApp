@@ -1,0 +1,27 @@
+.left{
+  width: 8%;
+  background: linear-gradient(to bottom, #4651E3 0%, #141EB3 40%, #141EB3 60%, #4651E3 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.right{
+  width: 93%;
+  margin-left: 8%;
+  height: 98vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 15px 0 0 15px;
+  position: fixed;
+  top: 1%;
+
+  align-items: center;
+  justify-content: center;
+}
