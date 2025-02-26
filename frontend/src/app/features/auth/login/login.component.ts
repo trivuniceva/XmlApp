@@ -20,10 +20,10 @@ export class LoginComponent {
   }
 
   goToSignup() {
-
+    this.router.navigate(['/signup'])
   }
 
   handleLogin($event: any) {
-    this.router.navigate(['/signup'])
+
   }
 }
