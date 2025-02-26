@@ -1,5 +1,6 @@
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .form-control {
@@ -7,6 +8,7 @@
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+
 }
 
 .error {
@@ -26,13 +28,14 @@
 }
 
 .btn-primary {
-  background-color: #ccc;
+  background-color: #141EB3;
   color: white;
 }
 
-.btn-primary:disabled {
-  background-color: #ccc;
+.btn-primary:hover{
+  background-color: #2a56c7;
 }
+
 
 .or-text {
   margin: 20px 0;
