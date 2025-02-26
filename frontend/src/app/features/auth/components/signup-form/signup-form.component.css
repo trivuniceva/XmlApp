@@ -1,0 +1,19 @@
+.form-step {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.text-danger {
+  color: #B80C09;
+  font-size: 0.875em;
+}
