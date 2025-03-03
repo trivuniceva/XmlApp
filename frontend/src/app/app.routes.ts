@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import {HomeComponent} from './features/home/home.component';
 import {SignupComponent} from './features/auth/pages/signup/signup.component';
-import {BasicSearchComponent} from './features/search/basic-search/basic-search.component';
+import {SearchPageComponent} from './features/search/search-page/search-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'search', component: BasicSearchComponent },
+  { path: 'search', component: SearchPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
 ];

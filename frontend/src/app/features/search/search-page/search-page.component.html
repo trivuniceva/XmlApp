@@ -1,1 +1,20 @@
-<p>search-page works!</p>
+<div class="search-container">
+  <div class="tabs-container">
+    <div class="tab" [class.active]="activeTab === 'basic'" (click)="setActiveTab('basic')">Basic Search</div>
+    <div class="tab" [class.active]="activeTab === 'advanced'" (click)="setActiveTab('advanced')">Advanced Search</div>
+    <div class="tab" [class.active]="activeTab === 'metadata'" (click)="setActiveTab('metadata')">Metadata Search</div>
+  </div>
+
+  <div *ngIf="activeTab === 'basic'">
+    <app-basic-search [requestList]="requestList"></app-basic-search>
+  </div>
+
+  <div *ngIf="activeTab === 'advanced'">
+    <app-advanced-search [requestList]="requestList"></app-advanced-search>
+  </div>
+
+  <div *ngIf="activeTab === 'metadata'">
+    <app-metadata-search></app-metadata-search>
+  </div>
+
+</div>

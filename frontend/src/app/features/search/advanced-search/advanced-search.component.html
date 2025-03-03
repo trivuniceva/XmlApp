@@ -1,1 +1,21 @@
-<p>advanced-search works!</p>
+<!-- Napredna pretraga sa logickim operatorima -->
+  <div class="search-field">
+    <label for="author">Author</label>
+    <input type="text" [(ngModel)]="authorFilter" placeholder="Search by Author">
+  </div>
+
+  <div class="search-field">
+    <label for="status">Status</label>
+    <input type="text" [(ngModel)]="statusFilter" placeholder="Search by Status">
+  </div>
+
+  <div class="operator-field">
+    <label for="operator">Logical Operator</label>
+    <select [(ngModel)]="selectedOperator">
+      <option value="AND">AND</option>
+      <option value="OR">OR</option>
+      <option value="NOT">NOT</option>
+    </select>
+  </div>
+
+  <button class="search-btn" (click)="performAdvancedSearch()">Advanced Search</button>
