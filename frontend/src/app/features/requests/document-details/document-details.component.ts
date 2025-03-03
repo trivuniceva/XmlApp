@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgIf} from '@angular/common';
 
 @Component({
@@ -12,5 +12,34 @@ import {NgIf} from '@angular/common';
 })
 export class DocumentDetailsComponent {
   @Input() document: any;
+  @Output() hideDocumentDetails = new EventEmitter<void>();
+
+  downloadXHTML() {
+
+  }
+
+  downloadPDF() {
+
+  }
+
+  downloadRDF() {
+
+  }
+
+  downloadJSON() {
+
+  }
+
+  acceptRequest() {
+
+  }
+
+  rejectRequest() {
+
+  }
+
+  close() {
+    this.hideDocumentDetails.emit(); // Emitujte događaj
+  }
 
 }

@@ -28,10 +28,8 @@
     </tbody>
   </table>
 </div>
-
 <div *ngIf="showDetails" class="popup-container">
   <div class="popup-content">
-    <app-document-details [document]="selectedDocument"></app-document-details>
-    <button (click)="hideDocumentDetails()">Zatvori</button>
+    <app-document-details [document]="selectedDocument" (hideDocumentDetails)="hideDocumentDetails()"></app-document-details>
   </div>
 </div>
