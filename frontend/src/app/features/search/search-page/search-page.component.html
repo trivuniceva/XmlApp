@@ -5,6 +5,7 @@
     <div class="tab" [class.active]="activeTab === 'metadata'" (click)="setActiveTab('metadata')">Metadata Search</div>
   </div>
 
+  <div class="folder-part">
   <div *ngIf="activeTab === 'basic'">
     <app-basic-search [requestList]="requestList"></app-basic-search>
   </div>
@@ -18,5 +19,5 @@
   </div>
 
   <app-table [requestList]="requestList"></app-table>
-
+  </div>
 </div>
