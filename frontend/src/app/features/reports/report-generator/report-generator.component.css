@@ -1,0 +1,52 @@
+.report-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 400px;
+  min-height: 400px;
+  margin: 8% auto;
+  padding: 60px 20px 20px;
+  text-align: center;
+  color: #333;
+  background-color: rgba(30,30,30, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #2a56c7;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1a3c91;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+input[type="date"]:focus {
+  border-color: #2a56c7;
+  outline: none;
+}
