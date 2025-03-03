@@ -4,6 +4,7 @@ import { AdvancedSearchComponent } from '../advanced-search/advanced-search.comp
 import { MetadataSearchComponent } from '../metadata-search/metadata-search.component';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {TableComponent} from '../table/table.component';
 
 @Component({
   selector: 'app-search-page',
@@ -12,9 +13,10 @@ import { FormsModule } from '@angular/forms';
     BasicSearchComponent,
     AdvancedSearchComponent,
     MetadataSearchComponent,
+    TableComponent,
     NgIf,
     FormsModule,
-    NgForOf
+    NgForOf,
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.css'
@@ -23,11 +25,6 @@ export class SearchPageComponent {
 
   activeTab: string = 'basic'; // pceetni tab
 
-  homeworkList = [
-    { course: 'Math' },
-    { course: 'Science' },
-    { course: 'History' }
-  ];
 
   requestList = [
     {

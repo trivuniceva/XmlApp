@@ -10,7 +10,7 @@ Osnovna pretraga
 
   <select class="input-field" [(ngModel)]="selectedFilter" (change)="filterHomework()">
     <option value="">All Courses</option>
-    <option *ngFor="let work of homeworkList" [value]="work.course">{{ work.course }}</option>
+    <option *ngFor="let work of vrstaDjela" [value]="work.course">{{ work.course }}</option>
   </select>
 
   <button class="search-btn" (click)="filterHomework()">Search</button>
