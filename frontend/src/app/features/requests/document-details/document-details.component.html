@@ -1,0 +1,29 @@
+<div *ngIf="document" class="document-details-container">
+  <div class="close-button">
+    <button (click)="close()">X</button>
+  </div>
+  <div class="download-section">
+    <div class="download-buttons">
+      <button (click)="downloadXHTML()">XHTML</button>
+      <button (click)="downloadPDF()">PDF</button>
+      <button (click)="downloadRDF()">RDF</button>
+      <button (click)="downloadJSON()">JSON</button>
+    </div>
+  </div>
+  <div class="document-info">
+    <h2>Document Details</h2>
+    <p><strong>Request Number:</strong> {{ document.requestNumber }}</p>
+    <p><strong>Author Name:</strong> {{ document.authorName }}</p>
+    <p><strong>Work Title:</strong> {{ document.workTitle }}</p>
+    <p><strong>Work Type:</strong> {{ document.workType }}</p>
+    <p><strong>Record Form:</strong> {{ document.recordForm }}</p>
+    <p><strong>Status:</strong> {{ document.status }}</p>
+    <p><strong>Full Request:</strong> {{ document.fullRequest }}</p>
+  </div>
+  <div class="resolution-section">
+    <div class="resolution-buttons">
+      <button (click)="acceptRequest()">Accept</button>
+      <button (click)="rejectRequest()">Reject</button>
+    </div>
+  </div>
+</div>

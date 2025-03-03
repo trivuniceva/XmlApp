@@ -1,0 +1,42 @@
+<div class="search-field-container">
+  <div class="search-field">
+    <label for="title">Title:</label>
+    <input type="text" [(ngModel)]="title" placeholder="Search by title">
+  </div>
+
+  <div class="search-field">
+    <label for="author">Author:</label>
+    <input type="text" [(ngModel)]="author" placeholder="Search by author">
+  </div>
+
+  <div class="search-field">
+    <label for="category">Category:</label>
+    <select [(ngModel)]="category" placeholder="Select category">
+      <option value="">Select category</option>
+      <option value="technology">Technology</option>
+      <option value="literature">Literature</option>
+      <option value="science">Science</option>
+    </select>
+  </div>
+
+  <div class="search-field">
+    <label for="startDate">Start date:</label>
+    <input type="date" [(ngModel)]="startDate" placeholder="Start date">
+  </div>
+
+  <div class="search-field">
+    <label for="endDate">End date:</label>
+    <input type="date" [(ngModel)]="endDate" placeholder="End date">
+  </div>
+
+  <div class="search-field">
+    <label for="logicalOperator">Logical operator:</label>
+    <select [(ngModel)]="logicalOperator">
+      <option value="AND">AND</option>
+      <option value="OR">OR</option>
+      <option value="NOT">NOT</option>
+    </select>
+  </div>
+
+  <button class="search-btn" (click)="onSearch()">Search</button>
+</div>

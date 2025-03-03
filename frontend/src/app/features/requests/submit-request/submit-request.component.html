@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h2>Copyright Registration Form A-1</h2>
+  <form (ngSubmit)="submitForm()">
+    <label for="name">1) Applicant (Name, Surname, Address, and Nationality):</label>
+    <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" [(ngModel)]="formData.phone" name="phone" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="formData.email" name="email" required />
+
+    <label for="pseudonym">2) Pseudonym or Author's Symbol (if applicable):</label>
+    <input type="text" id="pseudonym" [(ngModel)]="formData.pseudonym" name="pseudonym" />
+
+    <label for="representative">3) Representative’s Name and Address (if applicable):</label>
+    <input type="text" id="representative" [(ngModel)]="formData.representative" name="representative" />
+
+    <label for="title">4) Title of the Work:</label>
+    <input type="text" id="title" [(ngModel)]="formData.title" name="title" required />
+
+    <label for="sourceWork">5) Source Work (if it's a derivative work):</label>
+    <input type="text" id="sourceWork" [(ngModel)]="formData.sourceWork" name="sourceWork" />
+
+    <label for="workType">6) Type of Work (Musical, Visual, Computer Program, etc.):</label>
+    <input type="text" id="workType" [(ngModel)]="formData.workType" name="workType" required />
+
+    <label for="workForm">7) Work Form (Printed Text, Optical Disk, etc.):</label>
+    <input type="text" id="workForm" [(ngModel)]="formData.workForm" name="workForm" required />
+
+    <label for="authors">8) Author(s) Information (if not the applicant):</label>
+    <input type="text" id="authors" [(ngModel)]="formData.authors" name="authors" />
+
+    <label for="attachments">12) Attachments to Submit:</label>
+    <textarea id="attachments" [(ngModel)]="formData.attachments" name="attachments"></textarea>
+
+    <button type="submit">Submit Form</button>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<div class="search-field-container">
+  <div class="search-field">
+    <label for="author">Author</label>
+    <input type="text" [(ngModel)]="authorFilter" placeholder="Search by Author">
+  </div>
+
+  <div class="search-field">
+    <label for="status">Status</label>
+    <input type="text" [(ngModel)]="statusFilter" placeholder="Search by Status">
+  </div>
+
+  <button class="search-btn" (click)="performAdvancedSearch()">Advanced Search</button>
+</div>

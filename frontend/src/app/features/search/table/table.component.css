@@ -1,0 +1,93 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-family: sans-serif;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #dee2e6;
+  transition: transform 0.2s ease;
+}
+
+.table th {
+  background-color: #e9ecef;
+  font-weight: 600;
+}
+
+.notice-btn, .reply-btn, .cancel-btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.notice-btn {
+  background-color: #e0f2fe;
+  color: #1e88e5;
+  border: 1px solid #b3e5fc;
+}
+
+.reply-btn {
+  background-color: #e8f5e9;
+  color: #43a047;
+  border: 1px solid #c8e6c9;
+}
+
+.cancel-btn {
+  background-color: #ffebee;
+  color: #e53935;
+  border: 1px solid #ffcdd2;
+}
+
+.table tbody tr:hover td {
+  transform: translateY(-2px);
+}
+
+.table tbody tr:hover {
+  background-color: #f0f0f5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.notice-btn:hover {
+  background-color: #b3e5fc;
+}
+
+.reply-btn:hover {
+  background-color: #c8e6c9;
+}
+
+.cancel-btn:hover {
+  background-color: #ffcdd2;
+}
+
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Poluprozirna pozadina */
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Blurovanje pozadine */
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80%; /* Možete prilagoditi širinu */
+  max-width: 800px; /* Maksimalna širina */
+}

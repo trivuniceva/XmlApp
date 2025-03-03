@@ -1,0 +1,17 @@
+<div class="filter-section">
+  <input
+    type="text"
+    placeholder="Enter search term"
+    class="input-field"
+    [(ngModel)]="searchQuery"
+    (input)="filterHomework()"
+  />
+
+  <select class="input-field" [(ngModel)]="selectedFilter" (change)="filterHomework()">
+    <option value="">All Courses</option>
+    <option *ngFor="let work of vrstaDjela" [value]="work.course">{{ work.course }}</option>
+  </select>
+
+  <button class="search-btn" (click)="filterHomework()">Search</button>
+  <button class="export-btn" (click)="exportData()">Export</button>
+</div>

@@ -1,0 +1,35 @@
+<div *ngIf="!showDetails">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Request Number</th>
+      <th>Author Name</th>
+      <th>Work Title</th>
+      <th>Work Type</th>
+      <th>Record Form</th>
+      <th>Status</th>
+      <th>Operate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let request of requestList" (click)="showDocumentDetails(request)">
+      <td>{{ request.requestNumber }}</td>
+      <td>{{ request.authorName }}</td>
+      <td>{{ request.workTitle }}</td>
+      <td>{{ request.workType }}</td>
+      <td>{{ request.recordForm }}</td>
+      <td>{{ request.status }}</td>
+      <td>
+        <button class="notice-btn">Notice</button>
+        <button class="reply-btn">Reply</button>
+        <button class="cancel-btn">Cancel</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="showDetails" class="popup-container">
+  <div class="popup-content">
+    <app-document-details [document]="selectedDocument" (hideDocumentDetails)="hideDocumentDetails()"></app-document-details>
+  </div>
+</div>
