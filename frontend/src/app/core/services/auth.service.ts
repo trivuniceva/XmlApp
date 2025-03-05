@@ -1,9 +1,26 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:8080/api/auth';
 
-  constructor() { }
+  private userRoleSubject = new BehaviorSubject<string>('');
+  userRole$ = this.userRoleSubject.asObservable();
+
+
+  constructor(private http: HttpClient) { }
+
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(this.apiUrl + '/login', { email, password });
+  }
+
+  storageHandle({ user }: { user: any }) {
+    localStorage.setItem('loggedUser', JSON.stringify(user));
+    this.userRoleSubject.next(user.userRole);
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginFormComponent} from '../../components/login-form/login-form.component';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   forgotPassword() {
 
@@ -23,7 +24,18 @@ export class LoginComponent {
     this.router.navigate(['/signup'])
   }
 
-  handleLogin($event: any) {
+  handleLogin(event: any) {
+    console.log("ajmo log")
 
+    console.log("Email:", event.email);
+    console.log("Password:", event.password);
+
+    this.authService.login(event.email, event.password).subscribe(response => {
+      console.log('Login successful', response);
+      this.authService.storageHandle({ user: response });
+      this.router.navigate(['/profile'])
+    }, error => {
+      console.error('Login failed', error);
+    });
   }
 }
