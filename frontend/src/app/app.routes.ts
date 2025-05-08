@@ -5,6 +5,7 @@ import {SignupComponent} from './features/auth/pages/signup/signup.component';
 import {SearchPageComponent} from './features/search/search-page/search-page.component';
 import {ReportGeneratorComponent} from './features/reports/report-generator/report-generator.component';
 import {SubmitRequestComponent} from './features/requests/submit-request/submit-request.component';
+import {UserProfileComponent} from './features/user-profile/user-profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'report', component: ReportGeneratorComponent },
   { path: 'submit-req', component: SubmitRequestComponent },
+  {path: 'profile', component: UserProfileComponent},
 ];
