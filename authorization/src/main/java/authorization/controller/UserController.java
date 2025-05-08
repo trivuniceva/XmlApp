@@ -1,8 +1,9 @@
 package authorization.controller;
 
-import authorization.model.SystemUser;
+import authorization.model.User;
 import authorization.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +17,18 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @PostMapping("/login")
-    public ResponseEntity<SystemUser> login(@RequestBody SystemUser loginUser) {
-        SystemUser user = userService.login(loginUser.getEmail(), loginUser.getPassword());
+    public ResponseEntity<?> login(@RequestBody User loginUser) {
+        System.out.println("ulazi");
+        System.out.println(loginUser.toString());
+
+        User user = userService.login(loginUser.getUsername(), loginUser.getPassword());
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect email or password.");
+        }
+
+        System.out.println("user::: " + user.toString());
         return ResponseEntity.ok(user);
     }
 }

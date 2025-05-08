@@ -27,10 +27,10 @@ export class LoginComponent {
   handleLogin(event: any) {
     console.log("ajmo log")
 
-    console.log("Email:", event.email);
+    console.log("Username:", event.username);
     console.log("Password:", event.password);
 
-    this.authService.login(event.email, event.password).subscribe(response => {
+    this.authService.login(event.username, event.password).subscribe(response => {
       console.log('Login successful', response);
       this.authService.storageHandle({ user: response });
       this.router.navigate(['/profile'])

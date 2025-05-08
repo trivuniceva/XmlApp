@@ -1,6 +1,7 @@
 .left{
   width: 8%;
-  background: linear-gradient(to bottom, #4651E3 0%, #141EB3 40%, #141EB3 60%, #4651E3 100%);
+  /*background: linear-gradient(to bottom, #4651E3 0%, #141EB3 40%, #141EB3 60%, #4651E3 100%);*/
+  background: linear-gradient(to bottom, #1a3c91 0%, #141EB3 40%, #141EB3 60%, #1a3c91 100%);
   color: white;
   display: flex;
   align-items: center;

@@ -1,13 +1,14 @@
 package authorization.repository;
 
-import authorization.model.SystemUser;
+
+import authorization.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class UserRepository {
+import java.util.List;
 
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findUserByUsername(String username);
+    List<User> findAll();
 
-    public SystemUser findUserByEmail(String email) {
-        return null;
-    }
 }
