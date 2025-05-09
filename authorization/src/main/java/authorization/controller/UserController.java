@@ -19,16 +19,10 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User loginUser) {
-        System.out.println("ulazi");
-        System.out.println(loginUser.toString());
-
         User user = userService.login(loginUser.getUsername(), loginUser.getPassword());
-
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect email or password.");
         }
-
-        System.out.println("user::: " + user.toString());
         return ResponseEntity.ok(user);
     }
 }
