@@ -1,7 +1,7 @@
 <form [formGroup]="signupForm">
   <div *ngIf="currentStep === 1" class="form-step">
     <div class="form-group">
-      <input id="email" formControlName="email" type="email" placeholder="Email:" class="form-control">
+      <input id="username" formControlName="username" type="username" placeholder="Username:" class="form-control">
       <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)">
         <small class="text-danger" *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</small>
         <small class="text-danger" *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</small>
