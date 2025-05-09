@@ -1,5 +1,7 @@
 package authorization.controller;
 
+import authorization.dto.SignupRequestDTO;
+import authorization.model.SuccessResponse;
 import authorization.model.User;
 import authorization.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect email or password.");
         }
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> signupUser(@RequestBody SignupRequestDTO signupRequestDTO){
+
+        System.out.println(signupRequestDTO.toString());
+
+        return userService.signup(signupRequestDTO);
     }
 }

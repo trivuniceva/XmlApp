@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -23,4 +23,12 @@ export class AuthService {
     this.userRoleSubject.next(user.userRole);
   }
 
+  signup(userData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/signup`, userData).pipe(
+      catchError(error => {
+        console.error('Registration error:', error);
+        return throwError(error);
+      })
+    );
+  }
 }
