@@ -42,6 +42,11 @@ export class AuthService {
     console.log(localStorage);
     this.router.navigate(['/login']);
   }
+
+  getLoggedUser(){
+    const user = localStorage.getItem('loggedUser');
+    return user ? JSON.parse(user) : null;
+  }
 }
 
 
