@@ -3,3 +3,13 @@
   <a routerLink="/search">Search</a>
   <a routerLink="/login">Login</a>
 </div>
+
+<div *ngIf="userRole === 'CITIZEN'" class="sidenav">
+
+  <a routerLink="/login" (click)="$event.preventDefault(); logout()">Logout</a>
+</div>
+
+<div *ngIf="userRole === 'OFFICIAL'" class="sidenav">
+
+  <a routerLink="/login" (click)="$event.preventDefault(); logout()">Logout</a>
+</div>
