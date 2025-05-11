@@ -6,10 +6,21 @@
 
 <div *ngIf="userRole === 'CITIZEN'" class="sidenav">
 
+  <a routerLink="">Profile</a>
+  <a routerLink="">Search</a>
+  <a routerLink="">Submit Request</a>
+
   <a routerLink="/login" (click)="$event.preventDefault(); logout()">Logout</a>
 </div>
 
 <div *ngIf="userRole === 'OFFICIAL'" class="sidenav">
+
+  <a routerLink="">Profile</a>
+  <a routerLink="">Pending Requests</a>
+  <a routerLink="">Decisions</a>
+  <a routerLink="">Reports</a>
+  <a routerLink="">Metadata Download</a>
+
 
   <a routerLink="/login" (click)="$event.preventDefault(); logout()">Logout</a>
 </div>
