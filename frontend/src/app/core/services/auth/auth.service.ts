@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class AuthService {
   userRole$ = this.userRoleSubject.asObservable();
 
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router) { }
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(this.apiUrl + '/login', { username, password });
@@ -31,4 +34,14 @@ export class AuthService {
       })
     );
   }
+
+  logout() {
+    console.log(localStorage);
+    localStorage.removeItem('loggedUser');
+    this.userRoleSubject.next('');
+    console.log(localStorage);
+    this.router.navigate(['/login']);
+  }
 }
+
+
