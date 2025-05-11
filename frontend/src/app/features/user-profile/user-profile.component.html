@@ -1,1 +1,16 @@
-<p>user-profile works!</p>
+<div class="profile-wrapper">
+  <div class="profile-card">
+    <div class="avatar">
+      {{ user.firstname[0] }}{{ user.lastname[0] }}
+    </div>
+
+    <h2 class="fullname">{{ user.firstname }} {{ user.lastname }}</h2>
+    <p class="username">{{ user.username }}</p>
+    <p class="role">{{ user.userRole.toLowerCase() }}</p>
+
+    <div class="actions">
+      <button class="btn edit">Edit profile</button>
+      <button class="btn password">Change password</button>
+    </div>
+  </div>
+</div>
