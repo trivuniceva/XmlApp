@@ -1,12 +1,13 @@
 <div class="container">
+  <div class="container-info">
 
   <div *ngIf="currentStep === 0">
     <app-header></app-header>
+    <button type="button" (click)="goToStep(1)" class="btn btn-next">Next</button>
 
   </div>
 
   <div *ngIf="currentStep === 1">
-
     <app-applicant-identification (next)="handleNext($event)"></app-applicant-identification>
   </div>
 
@@ -42,12 +43,7 @@
         [showPopup]="showPopup"
 
       ></app-confirmation-dialog>
-
-
     </div>
-
   </div>
-
-
-
+  </div>
 </div>

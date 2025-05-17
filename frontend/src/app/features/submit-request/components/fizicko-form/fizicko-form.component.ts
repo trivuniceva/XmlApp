@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthorInfoFormComponent} from "../author-info-form/author-info-form.component";
 import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {UserInfoFormComponent} from '../user-info-form/user-info-form.component';
 
 @Component({
@@ -13,6 +13,7 @@ import {UserInfoFormComponent} from '../user-info-form/user-info-form.component'
     FormsModule,
     NgIf,
     NgForOf,
+    NgClass,
     UserInfoFormComponent
   ],
   templateUrl: './fizicko-form.component.html',

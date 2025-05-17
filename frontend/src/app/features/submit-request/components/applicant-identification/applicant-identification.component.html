@@ -1,21 +1,30 @@
-<form [formGroup]="form">
-  <label>Ко подноси пријаву?</label><br>
+<div class="centered-form-container">
+  <form [formGroup]="form" (ngSubmit)="onNext()">
+    <div class="form-group">
+      <label class="form-label">Ко подноси пријаву?</label>
 
-  <label>
-    <input type="radio" formControlName="applicantType" value="fizicko"> Физичко лице
-  </label><br>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="fizicko">
+          Физичко лице
+        </label>
 
-  <label>
-    <input type="radio" formControlName="applicantType" value="pravno"> Правно лице
-  </label><br>
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="pravno">
+          Правно лице
+        </label>
 
-  <label>
-    <input type="radio" formControlName="applicantType" value="punomocnik"> Пуномоћник (у име аутора)
-  </label><br>
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="punomocnik">
+          Пуномоћник (у име аутора)
+        </label>
+      </div>
 
-  <div *ngIf="form.controls['applicantType'].invalid && form.controls['applicantType'].touched" class="error">
-    Морате изабрати ко подноси пријаву.
-  </div>
+      <div *ngIf="form.controls['applicantType'].invalid && form.controls['applicantType'].touched" class="error">
+        Морате изабрати ко подноси пријаву.
+      </div>
+    </div>
 
-  <button type="button" (click)="onNext()" class="btn btn-next">Настави</button>
-</form>
+    <button type="submit" class="btn btn-next">Настави</button>
+  </form>
+</div>

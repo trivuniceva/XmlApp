@@ -1,24 +1,25 @@
-<p>Подаци о подносиоцу пријаве</p>
-<app-user-info-form></app-user-info-form>
+<div class="container" [ngClass]="{'single-section': isAuthorSubmitting, 'two-sections': !isAuthorSubmitting}">
+  <div class="left-section">
+    <div class="card">
+      <p>Подаци о подносиоцу пријаве</p>
+      <app-user-info-form></app-user-info-form>
 
-<!-- Izbor: Da li autor podnosi prijavu -->
-<label>Да ли аутор подноси пријаву?</label><br>
-<label>
-  <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="true">
-  Да
-</label>
-<label>
-  <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="false">
-  Не
-</label>
+      <label>Да ли аутор подноси пријаву?</label><br>
+      <label>
+        <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="true">
+        Да
+      </label>
+      <label>
+        <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="false">
+        Не
+      </label>
+    </div>
+  </div>
 
-<!-- Ako autor ne podnosi prijavu -->
-<div *ngIf="isAuthorSubmitting === false">
-
-  <p>info o autoru</p>
-  <app-author-info-form></app-author-info-form>
-
+  <div class="right-section" *ngIf="isAuthorSubmitting === false">
+    <div class="card">
+      <p>Информације о аутору</p>
+      <app-author-info-form></app-author-info-form>
+    </div>
+  </div>
 </div>
-
-
-

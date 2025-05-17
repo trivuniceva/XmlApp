@@ -1,13 +1,67 @@
+.centered-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+  color: #333;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.radio-option {
+  font-size: 1em;
+  color: #333;
+  display: flex;
+  gap: 10px;
+}
+
+.radio-option input[type="radio"] {
+  accent-color: #141EB3;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.error {
+  color: #B80C09;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
 .btn {
   padding: 10px 34px;
   border: none;
   border-radius: 4px;
   font-size: 1em;
   cursor: pointer;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .btn-next {
   background-color: #ccc;
+  color: white;
+}
+
+
+.btn-next:hover{
+  background-color: #0c116e;
   color: white;
 }
