@@ -15,6 +15,8 @@ import { NgForOf, NgIf } from '@angular/common';
 })
 export class AttachmentsComponent {
   attachmentsForm: FormGroup;
+  selectedFiles: File[] = [];
+
 
   attachmentOptions = [
     { label: 'Пример(а)к ауторског дела', controlName: 'workSample' },
@@ -36,4 +38,11 @@ export class AttachmentsComponent {
       .filter(opt => this.attachmentsForm.get(opt.controlName)?.value)
       .map(opt => opt.label);
   }
+
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files.length > 0) {
+      this.selectedFiles = Array.from(event.target.files);
+    }
+  }
+
 }
