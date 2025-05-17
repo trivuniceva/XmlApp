@@ -12,7 +12,6 @@
   </div>
 
   <div *ngIf="currentStep === 2">
-
     <ng-container [ngSwitch]="applicantType">
       <app-fizicko-form *ngSwitchCase="'fizicko'"></app-fizicko-form>
       <app-pravno-form *ngSwitchCase="'pravno'"></app-pravno-form>
