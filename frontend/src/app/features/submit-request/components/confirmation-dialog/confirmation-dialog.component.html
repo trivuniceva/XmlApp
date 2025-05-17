@@ -1,0 +1,15 @@
+<div *ngIf="showPopup" class="overlay" (click)="closePopup()">
+  <div class="summary-container" (click)="$event.stopPropagation()">
+    <h3>Потврда и сагласност</h3>
+
+    <p>✅ Потврђујем да су сви подаци тачни и да сам носилац или овлашћени подносилац пријаве.</p>
+
+<!--    <app-copyright-page></app-copyright-page>-->
+
+    <div class="action-buttons">
+      <button (click)="submitFinalRequest()" class="btn btn-confirm">Пошаљи пријаву</button>
+      <button (click)="closePopup()" class="btn btn-close">X</button>
+    </div>
+
+  </div>
+</div>

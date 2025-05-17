@@ -1,0 +1,13 @@
+.btn {
+  padding: 10px 34px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-next {
+  background-color: #ccc;
+  color: white;
+}

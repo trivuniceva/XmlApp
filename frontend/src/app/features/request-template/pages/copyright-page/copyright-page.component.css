@@ -1,0 +1,15 @@
+.container {
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  width: 80%;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.footnote {
+  margin: 0 auto;
+  padding-bottom: 10%;
+  width: 83%;
+  font-size: 0.9em;
+  font-style: italic;
+}

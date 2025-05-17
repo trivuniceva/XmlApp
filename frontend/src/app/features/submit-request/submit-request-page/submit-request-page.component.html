@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div *ngIf="currentStep === 0">
+    <app-header></app-header>
+
+  </div>
+
+  <div *ngIf="currentStep === 1">
+
+    <app-applicant-identification (next)="handleNext($event)"></app-applicant-identification>
+  </div>
+
+  <div *ngIf="currentStep === 2">
+
+    <ng-container [ngSwitch]="applicantType">
+      <app-fizicko-form *ngSwitchCase="'fizicko'"></app-fizicko-form>
+      <app-pravno-form *ngSwitchCase="'pravno'"></app-pravno-form>
+      <app-punomocnik-form *ngSwitchCase="'punomocnik'"></app-punomocnik-form>
+    </ng-container>
+
+    <button type="button" (click)="goToStep(1)" class="btn btn-next">Back</button>
+    <button type="button" (click)="goToStep(3)" class="btn btn-next">Next</button>
+  </div>
+
+  <div *ngIf="currentStep === 3">
+
+    <app-copyright-info-form></app-copyright-info-form>
+
+    <button type="button" (click)="goToStep(2)" class="btn btn-next">Back</button>
+    <button type="button" (click)="goToStep(4)" class="btn btn-next">Next</button>
+  </div>
+
+  <div *ngIf="currentStep === 4">
+    <app-attachments></app-attachments>
+
+    <button type="button" (click)="goToStep(3)" class="btn btn-next">Back</button>
+    <button type="button" (click)="onSubmitForm()" class="btn btn-submit">Submit</button>
+
+    <div *ngIf="showPopup" class="popup-overlay">
+
+      <app-confirmation-dialog
+        [showPopup]="showPopup"
+
+      ></app-confirmation-dialog>
+
+
+    </div>
+
+  </div>
+
+
+
+</div>

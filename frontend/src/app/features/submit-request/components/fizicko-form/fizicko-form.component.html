@@ -1,0 +1,24 @@
+<p>Подаци о подносиоцу пријаве</p>
+<app-user-info-form></app-user-info-form>
+
+<!-- Izbor: Da li autor podnosi prijavu -->
+<label>Да ли аутор подноси пријаву?</label><br>
+<label>
+  <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="true">
+  Да
+</label>
+<label>
+  <input type="radio" name="isAuthorSubmitting" [(ngModel)]="isAuthorSubmitting" [value]="false">
+  Не
+</label>
+
+<!-- Ako autor ne podnosi prijavu -->
+<div *ngIf="isAuthorSubmitting === false">
+
+  <p>info o autoru</p>
+  <app-author-info-form></app-author-info-form>
+
+</div>
+
+
+

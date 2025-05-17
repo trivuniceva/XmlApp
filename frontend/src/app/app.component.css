@@ -13,16 +13,16 @@
 }
 
 .right{
-  width: 93%;
+  /*width: 93%;*/
   margin-left: 8%;
-  height: 98vh;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: white;
-  border-radius: 15px 0 0 15px;
-  position: relative;
-  top: 1%;
-
-  align-items: center;
-  justify-content: center;
+  /*height: 98vh;*/
+  /*padding: 20px;*/
+  /*box-sizing: border-box;*/
+  /*background-color: white;*/
+  /*border-radius: 15px 0 0 15px;*/
+  /*position: relative;*/
+  /*top: 1%;*/
+  /**/
+  /*align-items: center;*/
+  /*justify-content: center;*/
 }
