@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 35px 15px 35px;
+  height: 90vh;
+  box-sizing: border-box;
+
+  gap: 20px;
+  justify-content: space-between;
+
+}
+
+.left-section, .right-section {
+  height: 100%;
+  overflow: auto;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  /*border: solid blue;*/
+}
+
+.left-section, .right-section {
+  flex: 1;
+}
+.card {
+  /*min-width: 300px;*/
+  box-sizing: border-box;
+  margin-top: 4%;
+  padding: 20px;
+
+
+}
