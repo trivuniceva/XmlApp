@@ -32,7 +32,7 @@ import {ConfirmationDialogComponent} from '../components/confirmation-dialog/con
   styleUrl: './submit-request-page.component.css'
 })
 export class SubmitRequestPageComponent {
-  currentStep: number = 1;
+  currentStep: number = 3;
   applicantType: string | null = null;
   showPopup = false;
 
