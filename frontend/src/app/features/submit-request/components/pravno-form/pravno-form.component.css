@@ -1,0 +1,27 @@
+.container{
+  height: 70vh;
+  border: solid blue;
+}
+
+.card.single {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  max-width: 600px;
+  height: 80vh;
+  margin: 35px auto 0;
+}
+
+.card.single p {
+  margin-bottom: 16px;
+}
+
+.form-control {
+  width: 40%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
