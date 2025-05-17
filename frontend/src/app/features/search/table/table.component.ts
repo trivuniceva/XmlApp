@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {DocumentDetailsComponent} from '../../requests/document-details/document-details.component';
+import {DocumentDetailsComponent} from '../../request-template/document-details/document-details.component';
 
 @Component({
   selector: 'app-table',

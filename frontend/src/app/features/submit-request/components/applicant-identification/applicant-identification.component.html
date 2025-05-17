@@ -1,0 +1,30 @@
+<div class="centered-form-container">
+  <form [formGroup]="form" (ngSubmit)="onNext()">
+    <div class="form-group">
+      <label class="form-label">Ко подноси пријаву?</label>
+
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="fizicko">
+          Физичко лице
+        </label>
+
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="pravno">
+          Правно лице
+        </label>
+
+        <label class="radio-option">
+          <input type="radio" formControlName="applicantType" value="punomocnik">
+          Пуномоћник (у име аутора)
+        </label>
+      </div>
+
+      <div *ngIf="form.controls['applicantType'].invalid && form.controls['applicantType'].touched" class="error">
+        Морате изабрати ко подноси пријаву.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-next">Настави</button>
+  </form>
+</div>

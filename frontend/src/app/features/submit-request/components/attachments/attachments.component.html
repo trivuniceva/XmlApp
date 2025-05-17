@@ -1,0 +1,28 @@
+<h3>🔹 6. Корак: Прилози уз пријаву</h3>
+<p>Питање: Које прилоге достављате уз пријаву? (чеклиста)</p>
+
+<form [formGroup]="attachmentsForm">
+  <div *ngFor="let attachment of attachmentOptions">
+    <label>
+      <input type="checkbox" [formControlName]="attachment.controlName" />
+      {{ attachment.label }}
+    </label>
+  </div>
+
+  <label>
+    Друго:
+    <input type="text" formControlName="otherAttachment" placeholder="Упишите други прилог" />
+  </label>
+</form>
+
+<div class="mt-4">
+  <strong>Изабрани прилози:</strong>
+  <ul>
+    <li *ngFor="let item of selectedAttachments">
+      {{ item }}
+    </li>
+    <li *ngIf="attachmentsForm.value.otherAttachment">
+      Друго: {{ attachmentsForm.value.otherAttachment }}
+    </li>
+  </ul>
+</div>
