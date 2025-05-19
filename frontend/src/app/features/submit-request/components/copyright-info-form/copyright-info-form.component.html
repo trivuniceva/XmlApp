@@ -1,10 +1,9 @@
 <div class="container" [ngClass]="{'single-section': !isAdaptation, 'two-sections': isAdaptation}">
-  <!-- Лева страна -->
   <div class="left-section">
     <div class="card">
       <h3>Подаци о делу</h3>
       <label for="workType">Која је врста дела?</label>
-      <select id="workType" class="form-control" [(ngModel)]="form.workType" name="workType">
+      <select id="workType" class="form-control" [(ngModel)]="copyrightInfoForm.controls['workType'].value" name="workType">
         <option value="Књижевно дело">Књижевно дело</option>
         <option value="Музичко дело">Музичко дело</option>
         <option value="Рачунарски програм">Рачунарски програм</option>
@@ -13,24 +12,24 @@
         <option value="Друго">Друго</option>
       </select>
 
-      <div *ngIf="form.workType === 'Друго'" class="mt-2">
+      <div *ngIf="copyrightInfoForm.controls['workType'].value === 'Друго'" class="mt-2">
         <label for="otherWorkType">Унесите врсту дела</label>
-        <input id="otherWorkType" class="form-control" [(ngModel)]="form.otherWorkType" name="otherWorkType" />
+        <input id="otherWorkType" class="form-control" [(ngModel)]="copyrightInfoForm.controls['otherWorkType'].value" name="otherWorkType" />
       </div>
 
       <div class="form-group mt-3">
         <label for="title">Наслов дела *</label>
-        <input id="title" class="form-control" [(ngModel)]="form.title" name="title" required />
+        <input id="title" class="form-control" [(ngModel)]="copyrightInfoForm.controls['title'].value" name="title" required />
       </div>
 
       <div class="form-group">
         <label for="altTitle">Алтернативни наслов (ако постоји)</label>
-        <input id="altTitle" class="form-control" [(ngModel)]="form.altTitle" name="altTitle" />
+        <input id="altTitle" class="form-control" [(ngModel)]="copyrightInfoForm.controls['altTitle'].value" name="altTitle" />
       </div>
 
       <div class="form-group mt-3">
         <label for="recordFormat">Форма записа *</label>
-        <select id="recordFormat" class="form-control" [(ngModel)]="form.recordFormat" name="recordFormat" required>
+        <select id="recordFormat" class="form-control" [(ngModel)]="copyrightInfoForm.controls['recordFormat'].value" name="recordFormat" required>
           <option value="Штампано">Штампано</option>
           <option value="Дигитално">Дигитално</option>
           <option value="Оптички диск">Оптички диск</option>
@@ -38,15 +37,14 @@
           <option value="Друго">Друго</option>
         </select>
 
-        <div *ngIf="form.recordFormat === 'Друго'" class="mt-2">
+        <div *ngIf="copyrightInfoForm.controls['recordFormat'].value === 'Друго'" class="mt-2">
           <label for="otherRecordFormat">Унесите форму записа</label>
-          <input id="otherRecordFormat" class="form-control" [(ngModel)]="form.otherRecordFormat" name="otherRecordFormat" />
+          <input id="otherRecordFormat" class="form-control" [(ngModel)]="copyrightInfoForm.controls['otherRecordFormat'].value" name="otherRecordFormat" />
         </div>
       </div>
 
       <hr>
 
-      <!-- Питање о преради -->
       <div class="form-group mt-3">
         <label>Корак: Да ли је у питању прерада другог дела?</label><br>
         <label>
@@ -61,18 +59,17 @@
     </div>
   </div>
 
-  <!-- Десна страна -->
   <div class="right-section" *ngIf="isAdaptation">
     <div class="card">
       <h3>Подаци о изворном делу</h3>
       <div class="form-group">
         <label for="sourceTitle">Наслов изворног дела</label>
-        <input id="sourceTitle" class="form-control" [(ngModel)]="form.sourceTitle" name="sourceTitle" />
+        <input id="sourceTitle" class="form-control" [(ngModel)]="copyrightInfoForm.controls['sourceTitle'].value" name="sourceTitle" />
       </div>
 
       <div class="form-group">
         <label>Аутор изворног дела</label>
-        <app-author-info-form></app-author-info-form>
+        <app-author-info-form [authorInfoGroup]="sourceAuthorInfoGroup"></app-author-info-form>
       </div>
     </div>
   </div>
