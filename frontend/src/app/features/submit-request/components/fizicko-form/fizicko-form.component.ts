@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {AuthorInfoFormComponent} from "../author-info-form/author-info-form.component";
-import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
-import {UserInfoFormComponent} from '../user-info-form/user-info-form.component';
+import { Component } from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { UserInfoFormComponent } from '../user-info-form/user-info-form.component';
+import { AuthorInfoFormComponent } from '../author-info-form/author-info-form.component';
 
 @Component({
   selector: 'app-fizicko-form',
@@ -35,33 +35,47 @@ export class FizickoFormComponent {
         phone: [''],
         email: [''],
       }),
-      authorInfo: this.fb.group({
-        name: [''],
-        lastname: [''],
-        city: [''],
-        street: [''],
-        streetNum: [''],
-        citizenship: [''],
-        phone: [''],
-        email: [''],
-      }),
+      authors: this.fb.array([this.createAuthorForm()]),
+    });
+  }
+
+  createAuthorForm(): FormGroup {
+    return this.fb.group({
+      name: [''],
+      lastname: [''],
+      city: [''],
+      street: [''],
+      streetNum: [''],
+      citizenship: [''],
+      phone: [''],
+      email: [''],
       isAnonymousAuthor: [false]
     });
-
   }
 
-
-  getFormValue(){
-    return this.fizickoForm.value;
+  addAuthor(): void {
+    this.authors.push(this.createAuthorForm());
   }
 
-  get userInfoGroup(): FormGroup{
+  removeAuthor(index: number): void {
+    if (this.authors.length > 1) {
+      this.authors.removeAt(index);
+    }
+  }
+
+  get authors(): FormArray {
+    return this.fizickoForm.get('authors') as FormArray;
+  }
+
+  get userInfoGroup(): FormGroup {
     return this.fizickoForm.get('userInfo') as FormGroup;
   }
 
-  get authorInfoGroup(): FormGroup {
-    return this.fizickoForm.get('authorInfo') as FormGroup;
+  getAuthorGroup(index: number): FormGroup {
+    return this.authors.controls[index] as FormGroup;
   }
 
-
+  getFormValue() {
+    return this.fizickoForm.value;
+  }
 }

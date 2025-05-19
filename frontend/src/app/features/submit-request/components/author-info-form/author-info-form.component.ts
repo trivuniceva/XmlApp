@@ -1,99 +1,24 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {PseudonimComponent} from '../pseudonim/pseudonim.component';
-import {UserInfoFormComponent} from '../user-info-form/user-info-form.component';
-import {Form, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { UserInfoFormComponent } from '../user-info-form/user-info-form.component';
 
 @Component({
   selector: 'app-author-info-form',
   standalone: true,
   imports: [
-    PseudonimComponent,
     UserInfoFormComponent,
-    NgForOf,
     NgIf,
-    FormsModule,
     ReactiveFormsModule
   ],
   templateUrl: './author-info-form.component.html',
   styleUrl: './author-info-form.component.css',
-
 })
 export class AuthorInfoFormComponent {
   @Input() authorInfoGroup!: FormGroup;
-  @Input() isAnonymousAuthor!: boolean;
-  @Output() anonymousAuthorChanged = new EventEmitter<boolean>();
+  @Input() authorIndex!: number;
 
-  IsAnonymousAuthor: boolean = false;
-  authorForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.authorForm = this.fb.group({
-      anonymousAuthor: this.isAnonymousAuthor,
-      userInfo: this.fb.group({
-        name:[''],
-        lastname:[''],
-        city:[''],
-        street:[''],
-        streetNum:[''],
-        citizenship:[''],
-        phone:[''],
-        email:[''],
-      }),
-
-    })
+  get userInfoGroup(): FormGroup {
+    return this.authorInfoGroup;
   }
-
-
-  get userInfoGroup(): FormGroup{
-    return this.authorForm.get('userInfo') as FormGroup;
-  }
-
-  setAnonymousAuthor(value: boolean) {
-    this.anonymousAuthorChanged.emit(value);
-  }
-
-  /*
-  form: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      authors: this.fb.array([this.createAuthorForm()]),
-      deathYear: ['']
-    });
-  }
-
-  createAuthorForm(): FormGroup {
-    return this.fb.group({
-      name: [''],
-      lastname: [''],
-      city: [''],
-      street: [''],
-      streetNum: [''],
-      citizenship: ['']
-    });
-  }
-
-
-  get authors(): FormArray {
-    return this.form.get('authors') as FormArray;
-  }
-
-  addCoAuthor(): void {
-    this.authors.push(this.createAuthorForm());
-  }
-
-  removeAuthor(index: number): void {
-    if (this.authors.length > 1) {
-      this.authors.removeAt(index);
-    }
-  }
-
-  submit() {
-
-  }
-
-
-
-   */
 }
