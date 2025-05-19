@@ -44,10 +44,6 @@ export class SubmitRequestPageComponent {
   pravnoFormData: PravnoPodnosilac | undefined;
   punomocnikFormData: PunomocnikPodnosilac | undefined;
 
-  // @ViewChild(FizickoFormComponent, { static: false }) fizickoFormComponent?: FizickoFormComponent;
-  // @ViewChild(PravnoFormComponent, { static: false }) pravnoFormComponent?: PravnoFormComponent;
-  // @ViewChild(PunomocnikFormComponent, { static: false }) punomocnikFormComponent?: PunomocnikFormComponent;
-
   @ViewChild('fizickoFormRef') fizickoFormComponent?: FizickoFormComponent;
   @ViewChild('pravnoFormRef') pravnoFormComponent?: PravnoFormComponent;
   @ViewChild('punomocnikFormRef') punomocnikFormComponent?: PunomocnikFormComponent;
@@ -67,13 +63,32 @@ export class SubmitRequestPageComponent {
       this.pravnoFormData = this.pravnoFormComponent.getFormValue() as PravnoPodnosilac; // Castuj na PravnoPodnosilac
       console.log("Podaci pravnog lica prikupljeni:", this.pravnoFormData);
       this.goToStep(3);
-    } else if (this.punomocnikFormComponent) {
+    }
+
+    else if (this.punomocnikFormComponent) {
       this.punomocnikFormData = this.punomocnikFormComponent.getFormValue() as PunomocnikPodnosilac;
       console.log(this.punomocnikFormData)
       this.goToStep(3);
-    } else if (this.fizickoFormComponent) {
-      this.fizickoFormData = this.fizickoFormComponent.getFormValue() as FizickoPodnosilac;
-      console.log(this.fizickoFormData)
+    }
+
+    else if (this.fizickoFormComponent) {
+      const formValue = this.fizickoFormComponent.getFormValue();
+      this.fizickoFormData = {
+        userInfo: formValue.userInfo,
+        isAuthorSubmitting: this.fizickoFormComponent.isAuthorSubmitting, // Pristup isAuthorSubmitting
+        authors: (formValue.authors as any[]).map(author => ({ // Mapiramo podatke autora
+          name: author.name,
+          lastname: author.lastname,
+          city: author.city,
+          street: author.street,
+          streetNum: author.streetNum,
+          citizenship: author.citizenship,
+          phone: author.phone,
+          email: author.email,
+          isAnonymousAuthor: author.isAnonymousAuthor
+        })),
+      };
+      console.log(this.fizickoFormData);
       this.goToStep(3);
     }
 
@@ -85,10 +100,15 @@ export class SubmitRequestPageComponent {
       console.log("Podaci pravnog lica za submit:", this.pravnoFormData);
       console.log("Poslovno ime:", this.pravnoFormData.poslovnoIme);
       console.log("Ime korisnika:", this.pravnoFormData.userInfo.name);
-    } else if (this.punomocnikFormData){
+    }
+
+    else if (this.punomocnikFormData){
       console.log(this.punomocnikFormData)
-    } else if (this.fizickoFormData){
+    }
+
+    else if (this.fizickoFormData){
       console.log(this.fizickoFormData)
+      console.log("Autori:", this.fizickoFormData.authors);
     }
 
     this.showPopup = true;

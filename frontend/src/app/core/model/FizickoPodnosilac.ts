@@ -3,7 +3,7 @@ import {AuthorInfo} from './AuthorInfo';
 
 export interface FizickoPodnosilac {
   userInfo: UserInfo;
-  authorSubmitting: boolean;
-  authorInfo?: AuthorInfo;
+  isAuthorSubmitting: boolean;
+  authors: AuthorInfo[];
 
 }
