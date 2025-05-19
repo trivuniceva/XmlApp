@@ -19,7 +19,19 @@
   <div class="right-section" *ngIf="isAuthorSubmitting === false">
     <div class="card">
       <p>Информације о аутору</p>
-<!--      <app-author-info-form></app-author-info-form>-->
+<!--      <app-author-info-form [authorInfoGroup]="fizickoForm.get('authorInfo')"></app-author-info-form>-->
+
+      <app-author-info-form
+        [authorInfoGroup]="authorInfoGroup"
+        [isAnonymousAuthor]="fizickoForm.get('isAnonymousAuthor')?.value"
+        (anonymousAuthorChanged)="fizickoForm.get('isAnonymousAuthor')?.setValue($event)">
+      </app-author-info-form>
+
+
+
+
+
+
     </div>
   </div>
 </div>

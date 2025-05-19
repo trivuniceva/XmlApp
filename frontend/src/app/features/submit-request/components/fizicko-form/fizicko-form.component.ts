@@ -24,21 +24,30 @@ export class FizickoFormComponent {
   fizickoForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    this.fizickoForm = this.fb.group(
-      {
-        userInfo: this.fb.group({
-          name:[''],
-          lastname:[''],
-          city:[''],
-          street:[''],
-          streetNum:[''],
-          citizenship:[''],
-          phone:[''],
-          email:[''],
-        }),
-        authorSubmitting: this.isAuthorSubmitting,
+    this.fizickoForm = this.fb.group({
+      userInfo: this.fb.group({
+        name: [''],
+        lastname: [''],
+        city: [''],
+        street: [''],
+        streetNum: [''],
+        citizenship: [''],
+        phone: [''],
+        email: [''],
+      }),
+      authorInfo: this.fb.group({
+        name: [''],
+        lastname: [''],
+        city: [''],
+        street: [''],
+        streetNum: [''],
+        citizenship: [''],
+        phone: [''],
+        email: [''],
+      }),
+      isAnonymousAuthor: [false]
+    });
 
-      });
   }
 
 
@@ -49,5 +58,10 @@ export class FizickoFormComponent {
   get userInfoGroup(): FormGroup{
     return this.fizickoForm.get('userInfo') as FormGroup;
   }
+
+  get authorInfoGroup(): FormGroup {
+    return this.fizickoForm.get('authorInfo') as FormGroup;
+  }
+
 
 }

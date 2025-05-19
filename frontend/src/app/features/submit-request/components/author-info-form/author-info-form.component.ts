@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {PseudonimComponent} from '../pseudonim/pseudonim.component';
 import {UserInfoFormComponent} from '../user-info-form/user-info-form.component';
-import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Form, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
@@ -16,10 +16,44 @@ import {NgForOf, NgIf} from '@angular/common';
     ReactiveFormsModule
   ],
   templateUrl: './author-info-form.component.html',
-  styleUrl: './author-info-form.component.css'
+  styleUrl: './author-info-form.component.css',
+
 })
 export class AuthorInfoFormComponent {
-  isAnonymousAuthor: boolean = false;
+  @Input() authorInfoGroup!: FormGroup;
+  @Input() isAnonymousAuthor!: boolean;
+  @Output() anonymousAuthorChanged = new EventEmitter<boolean>();
+
+  IsAnonymousAuthor: boolean = false;
+  authorForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.authorForm = this.fb.group({
+      anonymousAuthor: this.isAnonymousAuthor,
+      userInfo: this.fb.group({
+        name:[''],
+        lastname:[''],
+        city:[''],
+        street:[''],
+        streetNum:[''],
+        citizenship:[''],
+        phone:[''],
+        email:[''],
+      }),
+
+    })
+  }
+
+
+  get userInfoGroup(): FormGroup{
+    return this.authorForm.get('userInfo') as FormGroup;
+  }
+
+  setAnonymousAuthor(value: boolean) {
+    this.anonymousAuthorChanged.emit(value);
+  }
+
+  /*
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -58,4 +92,8 @@ export class AuthorInfoFormComponent {
   submit() {
 
   }
+
+
+
+   */
 }

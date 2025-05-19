@@ -1,14 +1,26 @@
 
 <label>Да ли је ауторско дело анонимног аутора?</label><br>
 <label>
-  <input type="radio" name="anonymousAuthor" [(ngModel)]="isAnonymousAuthor" [value]="true">
+  <input type="radio" name="anonymousAuthor"
+         [value]="true"
+         [checked]="isAnonymousAuthor"
+         (change)="setAnonymousAuthor(true)">
   Да
 </label>
 <label>
-  <input type="radio" name="anonymousAuthor" [(ngModel)]="isAnonymousAuthor" [value]="false">
+  <input type="radio" name="anonymousAuthor"
+         [value]="false"
+         [checked]="!isAnonymousAuthor"
+         (change)="setAnonymousAuthor(false)">
   Не
 </label>
 
+<div *ngIf="!isAnonymousAuthor">
+  <app-user-info-form [formGroup]="authorInfoGroup"></app-user-info-form>
+</div>
+
+
+<!--
 <div *ngIf="isAnonymousAuthor === false">
 
   <form [formGroup]="form" (ngSubmit)="submit()">
@@ -38,4 +50,4 @@
 
 </div>
 
-
+-->

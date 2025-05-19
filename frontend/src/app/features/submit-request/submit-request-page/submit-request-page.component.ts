@@ -44,9 +44,14 @@ export class SubmitRequestPageComponent {
   pravnoFormData: PravnoPodnosilac | undefined;
   punomocnikFormData: PunomocnikPodnosilac | undefined;
 
-  @ViewChild(FizickoFormComponent, { static: false }) fizickoFormComponent?: FizickoFormComponent;
-  @ViewChild(PravnoFormComponent, { static: false }) pravnoFormComponent?: PravnoFormComponent;
-  @ViewChild(PunomocnikFormComponent, { static: false }) punomocnikFormComponent?: PunomocnikFormComponent;
+  // @ViewChild(FizickoFormComponent, { static: false }) fizickoFormComponent?: FizickoFormComponent;
+  // @ViewChild(PravnoFormComponent, { static: false }) pravnoFormComponent?: PravnoFormComponent;
+  // @ViewChild(PunomocnikFormComponent, { static: false }) punomocnikFormComponent?: PunomocnikFormComponent;
+
+  @ViewChild('fizickoFormRef') fizickoFormComponent?: FizickoFormComponent;
+  @ViewChild('pravnoFormRef') pravnoFormComponent?: PravnoFormComponent;
+  @ViewChild('punomocnikFormRef') punomocnikFormComponent?: PunomocnikFormComponent;
+
 
   goToStep(step: number) {
     this.currentStep = step;
