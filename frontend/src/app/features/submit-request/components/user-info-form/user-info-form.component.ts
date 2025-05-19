@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-user-info-form',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './user-info-form.component.html',
   styleUrl: './user-info-form.component.css'
 })
 export class UserInfoFormComponent {
-
+  @Input() formGroup!: FormGroup;
 }

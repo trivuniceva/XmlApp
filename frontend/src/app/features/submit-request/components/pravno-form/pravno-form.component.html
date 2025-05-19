@@ -2,8 +2,10 @@
   <div class="card single">
     <p>Подаци о подносиоцу пријаве</p>
 
-    <input type="text" id="name" name="name" class="form-control" placeholder="Пословно име:">
+    <form [formGroup]="pravnoForm">
+      <input type="text" formControlName="poslovnoIme" class="form-control" placeholder="Пословно име:">
+      <app-user-info-form [formGroup]="userInfoGroup"></app-user-info-form>
+    </form>
 
-    <app-user-info-form></app-user-info-form>
   </div>
 </div>

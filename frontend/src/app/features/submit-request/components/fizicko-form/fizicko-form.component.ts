@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {AuthorInfoFormComponent} from "../author-info-form/author-info-form.component";
-import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {UserInfoFormComponent} from '../user-info-form/user-info-form.component';
 
@@ -21,5 +21,8 @@ import {UserInfoFormComponent} from '../user-info-form/user-info-form.component'
 })
 export class FizickoFormComponent {
   isAuthorSubmitting: boolean = false;
+
+  @Output() formData = new EventEmitter<any>();
+
 
 }

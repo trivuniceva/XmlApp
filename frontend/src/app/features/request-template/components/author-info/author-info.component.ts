@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-author-info',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './author-info.component.css'
 })
 export class AuthorInfoComponent {
+  @Input() formGroup!: FormGroup;
 
 }
