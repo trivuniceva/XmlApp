@@ -14,6 +14,7 @@ import {ConfirmationDialogComponent} from '../components/confirmation-dialog/con
 import {PravnoPodnosilac} from '../../../core/model/PravnoPodnosilac';
 import {PunomocnikComponent} from '../../request-template/components/punomocnik/punomocnik.component';
 import {PunomocnikPodnosilac} from '../../../core/model/PunomocnikPodnosilac';
+import {FizickoPodnosilac} from '../../../core/model/FizickoPodnosilac';
 
 @Component({
   selector: 'app-submit-request-page',
@@ -35,13 +36,15 @@ import {PunomocnikPodnosilac} from '../../../core/model/PunomocnikPodnosilac';
   styleUrl: './submit-request-page.component.css'
 })
 export class SubmitRequestPageComponent {
-  currentStep: number = 0;
+  currentStep: number = 1;
   applicantType: string | null = null;
   showPopup = false;
 
+  fizickoFormData: FizickoPodnosilac | undefined;
   pravnoFormData: PravnoPodnosilac | undefined;
   punomocnikFormData: PunomocnikPodnosilac | undefined;
 
+  @ViewChild(FizickoFormComponent, { static: false }) fizickoFormComponent?: FizickoFormComponent;
   @ViewChild(PravnoFormComponent, { static: false }) pravnoFormComponent?: PravnoFormComponent;
   @ViewChild(PunomocnikFormComponent, { static: false }) punomocnikFormComponent?: PunomocnikFormComponent;
 
@@ -63,6 +66,10 @@ export class SubmitRequestPageComponent {
       this.punomocnikFormData = this.punomocnikFormComponent.getFormValue() as PunomocnikPodnosilac;
       console.log(this.punomocnikFormData)
       this.goToStep(3);
+    } else if (this.fizickoFormComponent) {
+      this.fizickoFormData = this.fizickoFormComponent.getFormValue() as FizickoPodnosilac;
+      console.log(this.fizickoFormData)
+      this.goToStep(3);
     }
 
 
@@ -75,9 +82,9 @@ export class SubmitRequestPageComponent {
       console.log("Ime korisnika:", this.pravnoFormData.userInfo.name);
     } else if (this.punomocnikFormData){
       console.log(this.punomocnikFormData)
+    } else if (this.fizickoFormData){
+      console.log(this.fizickoFormData)
     }
-
-
 
     this.showPopup = true;
   }
