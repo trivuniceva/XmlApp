@@ -21,8 +21,33 @@ import {UserInfoFormComponent} from '../user-info-form/user-info-form.component'
 })
 export class FizickoFormComponent {
   isAuthorSubmitting: boolean = false;
+  fizickoForm: FormGroup;
 
-  @Output() formData = new EventEmitter<any>();
+  constructor(private fb: FormBuilder) {
+    this.fizickoForm = this.fb.group(
+      {
+        userInfo: this.fb.group({
+          name:[''],
+          lastname:[''],
+          city:[''],
+          street:[''],
+          streetNum:[''],
+          citizenship:[''],
+          phone:[''],
+          email:[''],
+        }),
+        authorSubmitting: this.isAuthorSubmitting,
 
+      });
+  }
+
+
+  getFormValue(){
+    return this.fizickoForm.value;
+  }
+
+  get userInfoGroup(): FormGroup{
+    return this.fizickoForm.get('userInfo') as FormGroup;
+  }
 
 }
