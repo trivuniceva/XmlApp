@@ -1,14 +1,16 @@
 <div class="container" >
   <div class="left-section">
     <div class="card">
+      <form [formGroup]="punomocnikForm">
       <p>Подаци о подносиоцу пријаве</p>
-      <app-user-info-form></app-user-info-form>
+      <app-user-info-form [formGroup]="userInfoGroup"></app-user-info-form>
+      </form>
     </div>
   </div>
 
   <div class="right-section">
     <div class="card">
-      <app-author-info-form></app-author-info-form>
+<!--      <app-author-info-form></app-author-info-form>-->
     </div>
   </div>
 

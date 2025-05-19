@@ -1,41 +1,18 @@
-
 <label>Да ли је ауторско дело анонимног аутора?</label><br>
 <label>
-  <input type="radio" name="anonymousAuthor" [(ngModel)]="isAnonymousAuthor" [value]="true">
+  <input type="radio" name="anonymousAuthor_{{ authorIndex }}" [value]="true"
+         [checked]="authorInfoGroup.get('isAnonymousAuthor')?.value"
+         (change)="authorInfoGroup.get('isAnonymousAuthor')?.setValue(true)">
   Да
 </label>
 <label>
-  <input type="radio" name="anonymousAuthor" [(ngModel)]="isAnonymousAuthor" [value]="false">
+  <input type="radio" name="anonymousAuthor_{{ authorIndex }}"
+         [value]="false"
+         [checked]="!authorInfoGroup.get('isAnonymousAuthor')?.value"
+         (change)="authorInfoGroup.get('isAnonymousAuthor')?.setValue(false)">
   Не
 </label>
 
-<div *ngIf="isAnonymousAuthor === false">
-
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div formArrayName="authors">
-      <div *ngFor="let author of authors.controls; let i = index" [formGroupName]="i">
-        <p>Информације о аутору/коаутору {{ i + 1 }}:</p>
-        <app-user-info-form></app-user-info-form>
-
-        <label for="death-year">Година смрти (ако је преминуо):</label>
-        <input type="date" id="death-year" formControlName="deathYear">
-
-        <button type="button" (click)="removeAuthor(i)" *ngIf="authors.length > 1">Уклони</button>
-        <hr />
-      </div>
-    </div>
-
-    <div>
-      <button type="button" (click)="addCoAuthor()">Додај коаутора</button>
-    </div>
-
-    <div>
-      <button type="submit">Сачувај</button>
-    </div>
-  </form>
-
-  <app-pseudonim></app-pseudonim>
-
+<div *ngIf="!authorInfoGroup.get('isAnonymousAuthor')?.value">
+  <app-user-info-form [formGroup]="authorInfoGroup"></app-user-info-form>
 </div>
-
-

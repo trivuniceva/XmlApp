@@ -27,7 +27,7 @@ export class ApplicantIdentificationComponent {
     if (this.form.valid) {
       const selectedType = this.form.value.applicantType;
       console.log("Изабрани тип:", selectedType);
-      this.next.emit(selectedType); // pošalji izabrani tip roditelju
+      this.next.emit(selectedType);
     } else {
       this.form.markAllAsTouched();
     }

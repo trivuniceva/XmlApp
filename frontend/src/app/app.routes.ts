@@ -4,7 +4,6 @@ import {HomeComponent} from './features/home/home.component';
 import {SignupComponent} from './features/auth/pages/signup/signup.component';
 import {SearchPageComponent} from './features/search/search-page/search-page.component';
 import {ReportGeneratorComponent} from './features/reports/report-generator/report-generator.component';
-import {SubmitRequestComponent} from './features/request-template/submit-request/submit-request.component';
 import {UserProfileComponent} from './features/user-profile/user-profile.component';
 import {CopyrightPageComponent} from './features/request-template/pages/copyright-page/copyright-page.component';
 import {SubmitRequestPageComponent} from './features/submit-request/submit-request-page/submit-request-page.component';
@@ -15,7 +14,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'report', component: ReportGeneratorComponent },
-  // { path: 'submit-req', component: SubmitRequestComponent },
   { path: 'submit-req', component: CopyrightPageComponent },
   {path: 'profile', component: UserProfileComponent},
 

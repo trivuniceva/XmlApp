@@ -2,7 +2,7 @@
   <!-- Лева страна -->
   <div class="left-section">
     <div class="card">
-      <label for="workType">4. Корак: Подаци о делу</label>
+      <h3>Подаци о делу</h3>
       <label for="workType">Која је врста дела?</label>
       <select id="workType" class="form-control" [(ngModel)]="form.workType" name="workType">
         <option value="Књижевно дело">Књижевно дело</option>
@@ -64,7 +64,7 @@
   <!-- Десна страна -->
   <div class="right-section" *ngIf="isAdaptation">
     <div class="card">
-      <p>Подаци о изворном делу</p>
+      <h3>Подаци о изворном делу</h3>
       <div class="form-group">
         <label for="sourceTitle">Наслов изворног дела</label>
         <input id="sourceTitle" class="form-control" [(ngModel)]="form.sourceTitle" name="sourceTitle" />
