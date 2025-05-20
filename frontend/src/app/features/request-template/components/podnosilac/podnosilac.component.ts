@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AuthorInfoComponent} from "../author-info/author-info.component";
+import {UserInfo} from '../../../../core/model/UserInfo';
 
 @Component({
   selector: 'app-podnosilac',
@@ -11,5 +12,5 @@ import {AuthorInfoComponent} from "../author-info/author-info.component";
   styleUrl: './podnosilac.component.css'
 })
 export class PodnosilacComponent {
-
+  @Input() podnosilac!: UserInfo;
 }

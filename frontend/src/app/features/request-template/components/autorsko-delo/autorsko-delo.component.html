@@ -1,67 +1,65 @@
 <div class="section">
   <p>4) Наслов ауторског дела, односно алтернативни наслов, ако га има, по коме ауторско дело може да се идентификује * :</p>
-  <input type="text" id="naslovDela" name="naslovDela" [(ngModel)]="naslovDela">
+  <input type="text" id="naslovDela" name="naslovDela" [value]="delo?.title" readonly>
 </div>
 
-<div class="section">
+<div class="section" *ngIf="delo?.isAdaptation">
   <p>5) Подаци о наслову ауторског дела на коме се заснива дело прераде, ако је у питању ауторско дело прераде, као и податак о аутору изворног дела:</p>
   <label for="naslovOriginalnogDela">Наслов оригиналног дела:</label>
-  <input type="text" id="naslovOriginalnogDela" name="naslovOriginalnogDela" [(ngModel)]="naslovOriginalnogDela"><br>
+  <input type="text" id="naslovOriginalnogDela" name="naslovOriginalnogDela" [value]="delo?.sourceTitle" readonly><br>
 
-  <label for="autorOriginalnogDela">Аутор оригиналног дела:</label>
-  <input type="text" id="autorOriginalnogDela" name="autorOriginalnogDela" [(ngModel)]="autorOriginalnogDela"><br>
+  <label>Аутор оригиналног дела:</label>
+  <div *ngIf="delo?.sourceAuthorInfo">
+    <p>Име: {{ delo?.sourceAuthorInfo?.name }}</p>
+    <p>Презиме: {{ delo?.sourceAuthorInfo?.lastname }}</p>
+    <p>Држављанство: {{ delo?.sourceAuthorInfo?.citizenship }}</p>
+  </div>
+  <div *ngIf="!delo?.sourceAuthorInfo">
+    <p>Информације о аутору оригиналног дела нису унете.</p>
+  </div>
 </div>
 
 <div class="section">
   <p>6) Подаци о врсти ауторског дела (књижевно дело, музичко дело, ликовно дело, рачунарски програм и др.) * :</p>
-  <input type="radio" id="vrstaKnjizevno" name="vrstaDela" value="knjizevno" [(ngModel)]="vrstaDela">
-  <label for="vrstaKnjizevno">књижевно дело</label><br>
+  <div>
+    <input type="radio" id="vrstaKnjizevno" name="vrstaDela" value="Књижевно дело" [checked]="delo?.workType === 'Књижевно дело'" disabled>
+    <label for="vrstaKnjizevno">књижевно дело</label><br>
 
-  <input type="radio" id="vrstaMuzicko" name="vrstaDela" value="muzicko" [(ngModel)]="vrstaDela">
-  <label for="vrstaMuzicko">музичко дело</label><br>
+    <input type="radio" id="vrstaMuzicko" name="vrstaDela" value="Музичко дело" [checked]="delo?.workType === 'Музичко дело'" disabled>
+    <label for="vrstaMuzicko">музичко дело</label><br>
 
-  <input type="radio" id="vrstaLikovno" name="vrstaDela" value="likovno" [(ngModel)]="vrstaDela">
-  <label for="vrstaLikovno">ликовно дело</label><br>
+    <input type="radio" id="vrstaLikovno" name="vrstaDela" value="ликовно дело" [checked]="delo?.workType === 'ликовно дело'" disabled>
+    <label for="vrstaLikovno">ликовно дело</label><br>
 
-  <input type="radio" id="vrstaRacunarskiProgram" name="vrstaDela" value="racunarskiProgram" [(ngModel)]="vrstaDela">
-  <label for="vrstaRacunarskiProgram">рачунарски програм</label><br>
+    <input type="radio" id="vrstaRacunarskiProgram" name="vrstaDela" value="Рачунарски програм" [checked]="delo?.workType === 'Рачунарски програм'" disabled>
+    <label for="vrstaRacunarskiProgram">рачунарски програм</label><br>
 
-  <input type="radio" id="vrstaDrugo" name="vrstaDela" value="drugo" [(ngModel)]="vrstaDela">
-  <label for="vrstaDrugo">друго</label><br>
+    <input type="radio" id="vrstaDrugo" name="vrstaDela" value="Друго" [checked]="delo?.workType === 'Друго'" disabled>
+    <label for="vrstaDruго">друго</label>
+    <span *ngIf="delo?.workType === 'Друго'">({{ delo?.otherWorkType }})</span><br>
+  </div>
 </div>
 
 <div class="section">
   <p>7) Подаци о форми записа ауторског дела (штампани текст, оптички диск и слично) * :</p>
-  <input type="radio" id="formaStampaniTekst" name="formaZapisa" value="stampaniTekst" [(ngModel)]="formaZapisa">
-  <label for="formaStampaniTekst">штампани текст</label><br>
+  <div>
+    <input type="radio" id="formaStampaniTekst" name="formaZapisa" value="Штампано" [checked]="delo?.recordFormat === 'Штампано'" disabled>
+    <label for="formaStampaniTekst">штампани текст</label><br>
 
-  <input type="radio" id="formaOptickiDisk" name="formaZapisa" value="optickiDisk" [(ngModel)]="formaZapisa">
-  <label for="formaOptickiDisk">оптички диск</label><br>
+    <input type="radio" id="formaOptickiDisk" name="formaZapisa" value="Оптички диск" [checked]="delo?.recordFormat === 'Оптички диск'" disabled>
+    <label for="formaOptickiDisk">оптички диск</label><br>
 
-  <input type="radio" id="formaDrugo" name="formaZapisa" value="drugo" [(ngModel)]="formaZapisa">
-  <label for="formaDrugo">друго</label><br>
+    <input type="radio" id="formaDrugo" name="formaZapisa" value="Друго" [checked]="delo?.recordFormat === 'Друго'" disabled>
+    <label for="formaDrugo">друго</label>
+    <span *ngIf="delo?.recordFormat === 'Друго'">({{ delo?.otherRecordFormat }})</span><br>
+  </div>
 </div>
 
 <div class="section">
   <p>8) Подаци о аутору ако подносилац пријаве из тачке 1. овог захтева није аутор и то: презиме, име, адреса и држављанство аутора (групе аутора или коаутора), а ако су у питању један или више аутора који нису живи, имена аутора и године смрти аутора а ако је у питању ауторско дело анонимног аутора:</p>
 
-  <app-author-info></app-author-info>
+  <p>Ova sekcija zahteva posebnu logiku za prikazivanje autora dela ako podnosilac nije autor. S obzirom na složenost (više autora, anonimni autori, preminuli autori), moraćemo detaljnije da razmotrimo kako se ti podaci prikupljaju i struktuiraju da bi se ovde pravilno prikazali.</p>
 
   <hr>
 
-  <label>Имена и године смрти (ако нису живи):</label>
-
-  <label for="name">Име:</label>
-  <input type="text" id="name" name="name">
-
-  <label for="lastname">Презиме:</label>
-  <input type="text" id="lastname" name="lastname">
-
-  <label for="death-year">Година смрти:</label>
-  <input type="date" id="death-year" name="death-year">
-
-  <br>
-
-  <label for="autorAnoniman">Анониман аутор:</label>
-  <input type="checkbox" id="autorAnoniman" name="autorAnoniman" [(ngModel)]="autorAnoniman">
 </div>

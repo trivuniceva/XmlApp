@@ -14,6 +14,7 @@ import { PunomocnikComponent } from '../../request-template/components/punomocni
 import { PunomocnikPodnosilac } from '../../../core/model/PunomocnikPodnosilac';
 import { FizickoPodnosilac } from '../../../core/model/FizickoPodnosilac';
 import { FormArray } from '@angular/forms';
+import {FormDataService} from '../../../core/services/copyright-data/form-data.service';
 
 @Component({
   selector: 'app-submit-request-page',
@@ -49,6 +50,9 @@ export class SubmitRequestPageComponent {
   @ViewChild('punomocnikFormRef') punomocnikFormComponent?: PunomocnikFormComponent;
   @ViewChild('copyrightInfoFormRef') copyrightInfoFormComponent?: CopyrightInfoFormComponent;
 
+  constructor(private formDataService: FormDataService) { }
+
+
   goToStep(step: number) {
     this.currentStep = step;
   }
@@ -60,16 +64,18 @@ export class SubmitRequestPageComponent {
 
   collectFormData() {
     if (this.pravnoFormComponent) {
-      this.pravnoFormData = this.pravnoFormComponent.getFormValue() as PravnoPodnosilac;
-      console.log("Podaci pravnog lica prikupljeni:", this.pravnoFormData);
+      const formData = this.pravnoFormComponent.getFormValue() as PravnoPodnosilac;
+      this.formDataService.setPravnoFormData(formData);
+      console.log("Podaci pravnog lica prikupljeni i poslati servisu:", formData);
       this.goToStep(3);
     } else if (this.punomocnikFormComponent) {
-      this.punomocnikFormData = this.punomocnikFormComponent.getFormValue() as PunomocnikPodnosilac;
-      console.log(this.punomocnikFormData);
+      const formData = this.punomocnikFormComponent.getFormValue() as PunomocnikPodnosilac;
+      this.formDataService.setPunomocnikFormData(formData);
+      console.log("Podaci punomocnika prikupljeni i poslati servisu:", formData);
       this.goToStep(3);
     } else if (this.fizickoFormComponent) {
       const fizickoFormValue = this.fizickoFormComponent.getFormValue();
-      this.fizickoFormData = {
+      const formData: FizickoPodnosilac = {
         userInfo: fizickoFormValue.userInfo,
         isAuthorSubmitting: this.fizickoFormComponent.isAuthorSubmitting,
         authors: (fizickoFormValue.authors as any[]).map(author => ({
@@ -83,16 +89,24 @@ export class SubmitRequestPageComponent {
           email: author.email,
           isAnonymousAuthor: author.isAnonymousAuthor
         })),
-        copyrightInfo: {} as any // Inicijalizujemo prazan objekat, popunicemo kasnije
+        copyrightInfo: {} as any
       };
-      console.log("Podaci o podnosiocu (fizicko) prikupljeni:", this.fizickoFormData);
+      this.formDataService.setFizickoFormData(formData);
+      this.fizickoFormData = formData;
+      console.log("Podaci o podnosiocu (fizicko) prikupljeni i poslati servisu:", this.fizickoFormData);
       this.goToStep(3);
     }
   }
 
   collectCopyrightInfo() {
+    console.log("Pozvana collectCopyrightInfo()");
+    console.log("this.copyrightInfoFormComponent:", this.copyrightInfoFormComponent);
+    console.log("this.fizickoFormData PRE AŽURIRANJA:", this.fizickoFormData);
+
     if (this.copyrightInfoFormComponent && this.fizickoFormData) {
       const copyrightFormValue = this.copyrightInfoFormComponent.copyrightInfoForm.value;
+      console.log("copyrightFormValue:", copyrightFormValue);
+
       this.fizickoFormData.copyrightInfo = {
         workType: copyrightFormValue.workType,
         otherWorkType: copyrightFormValue.otherWorkType,
@@ -104,8 +118,11 @@ export class SubmitRequestPageComponent {
         sourceTitle: copyrightFormValue.sourceTitle,
         sourceAuthorInfo: copyrightFormValue.sourceAuthorInfo
       };
-      console.log("Podaci o delu prikupljeni:", this.fizickoFormData.copyrightInfo);
+      this.formDataService.setFizickoFormData(this.fizickoFormData);
+      console.log("Podaci o delu prikupljeni i ažurirani u servisu:", this.fizickoFormData);
       this.goToStep(4);
+    } else {
+      console.warn("Nije moguće prikupiti podatke o delu. copyrightInfoFormComponent ili fizickoFormData nedostaje.");
     }
   }
 

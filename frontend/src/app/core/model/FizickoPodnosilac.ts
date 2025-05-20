@@ -5,7 +5,7 @@ export interface FizickoPodnosilac {
   userInfo: UserInfo;
   isAuthorSubmitting: boolean;
   authors: AuthorInfo[];
-  copyrightInfo: { // Dodajemo informacije o delu
+  copyrightInfo: {
     workType: string;
     otherWorkType?: string;
     title: string;
@@ -14,7 +14,7 @@ export interface FizickoPodnosilac {
     otherRecordFormat?: string;
     isAdaptation: boolean | null;
     sourceTitle?: string;
-    sourceAuthorInfo?: AuthorInfo; // Informacije o autoru originalnog dela
+    sourceAuthorInfo?: AuthorInfo;
   };
 
 }
