@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {AuthorInfo} from '../../../../core/model/AuthorInfo';
 
 @Component({
   selector: 'app-pseudonim',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './pseudonim.component.css'
 })
 export class PseudonimComponent {
-
+  @Input() autor!: AuthorInfo;
 }

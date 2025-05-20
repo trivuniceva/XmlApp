@@ -22,13 +22,12 @@
     <button type="button" (click)="collectFormData()" class="btn btn-next">Next</button>
   </div>
 
-  <div *ngIf="currentStep === 3">
+    <div *ngIf="currentStep === 3">
+      <app-copyright-info-form #copyrightInfoFormRef></app-copyright-info-form>
 
-    <app-copyright-info-form></app-copyright-info-form>
-
-    <button type="button" (click)="goToStep(2)" class="btn btn-next">Back</button>
-    <button type="button" (click)="goToStep(4)" class="btn btn-next">Next</button>
-  </div>
+      <button type="button" (click)="goToStep(2)" class="btn btn-next">Back</button>
+      <button type="button" (click)="collectCopyrightInfo()" class="btn btn-next">Next</button>
+    </div>
 
   <div *ngIf="currentStep === 4">
     <app-attachments></app-attachments>

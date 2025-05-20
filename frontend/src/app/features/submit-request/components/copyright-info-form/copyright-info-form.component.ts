@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule, NgIf} from '@angular/common';
 import {AuthorInfoFormComponent} from '../author-info-form/author-info-form.component';
 
@@ -17,16 +17,37 @@ import {AuthorInfoFormComponent} from '../author-info-form/author-info-form.comp
 })
 export class CopyrightInfoFormComponent {
   isAdaptation: boolean = false;
+  copyrightInfoForm: FormGroup;
 
-  form = {
-    workType: '',
-    otherWorkType: '',
-    title: '',
-    altTitle: '',
-    recordFormat: '',
-    otherRecordFormat: '',
-    isAdaptation: null as boolean | null,
-    sourceTitle: '',
-    sourceAuthor: ''
-  };
+  constructor(private fb: FormBuilder) {
+    this.copyrightInfoForm = this.fb.group({
+      workType: [''],
+      otherWorkType: [''],
+      title: [''],
+      altTitle: [''],
+      recordFormat: [''],
+      otherRecordFormat: [''],
+      isAdaptation: [false],
+      sourceTitle: [''],
+      sourceAuthorInfo: this.fb.group({
+        name: [''],
+        lastname: [''],
+        city: [''],
+        street: [''],
+        streetNum: [''],
+        citizenship: [''],
+        phone: [''],
+        email: [''],
+        isAnonymousAuthor: [false]
+      })
+    });
+  }
+
+  get form() {
+    return this.copyrightInfoForm.value;
+  }
+
+  get sourceAuthorInfoGroup() {
+    return this.copyrightInfoForm.get('sourceAuthorInfo') as FormGroup;
+  }
 }
