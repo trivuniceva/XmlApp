@@ -67,6 +67,8 @@ export class SubmitRequestPageComponent {
       const formData = this.pravnoFormComponent.getFormValue() as PravnoPodnosilac;
       this.formDataService.setPravnoFormData(formData);
       console.log("Podaci pravnog lica prikupljeni i poslati servisu:", formData);
+
+
       this.goToStep(3);
     } else if (this.punomocnikFormComponent) {
       const formData = this.punomocnikFormComponent.getFormValue() as PunomocnikPodnosilac;

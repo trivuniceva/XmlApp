@@ -1,12 +1,32 @@
 <div class="section">
   <p>1) Подносилац - име, презиме, адреса и држављанство аутора или другог носиоца ауторског права ако је подносилац физичко лице, односно пословно име и седиште носиоца ауторског права ако је подносилац правно лице * :</p>
   <div class="form-row">
+    <ng-container *ngIf="fizickoPodnosilacData">
+      <p><span class="label-small">Име:</span> <strong class="value-large"> {{ userInfo?.name }} </strong></p>
+      <p><span class="label-small">Презиме:</span> <strong class="value-large"> {{ userInfo?.lastname }} </strong></p>
+      <p><span class="label-small">Адреса:</span> <strong class="value-large"> {{ userInfo?.street }} {{ userInfo?.streetNum }}, {{ userInfo?.city }} </strong></p>
+      <p><span class="label-small">Држављанство:</span> <strong class="value-large"> {{ userInfo?.citizenship }} </strong></p>
+      <p><span class="label-small">Телефон:</span> <strong class="value-large"> {{ userInfo?.phone }} </strong></p>
+      <p><span class="label-small">E-mail:</span> <strong class="value-large"> {{ userInfo?.email }} </strong></p>
 
-    <app-author-info></app-author-info>
+    </ng-container>
 
-    <label for="phone">телефон:</label>
-    <input type="text" id="phone" name="telefon">
-    <label for="email">e-mail:</label>
-    <input type="email" id="email" name="email">
+    <ng-container *ngIf="pravnoPodnosilacData">
+      <p><span class="label-small">Пословно име:</span> <strong class="value-large">{{ pravnoPodnosilacData.poslovnoIme }}</strong></p>
+      <p><span class="label-small">Седиште:</span>
+        <strong class="value-large">
+          {{ pravnoPodnosilacData.userInfo.street }}
+          {{ pravnoPodnosilacData.userInfo.streetNum }},
+          {{ pravnoPodnosilacData.userInfo.city }}
+        </strong>
+      </p>
+      <p><span class="label-small">Телефон:</span> <strong class="value-large">{{ userInfo?.phone }}</strong></p>
+      <p><span class="label-small">E-mail:</span> <strong class="value-large">{{ userInfo?.email }}</strong></p>
+    </ng-container>
+
+    <ng-container *ngIf="!fizickoPodnosilacData && !pravnoPodnosilacData">
+      <p> / (Podaci podnosioca nisu dostupni)</p>
+    </ng-container>
+
   </div>
 </div>

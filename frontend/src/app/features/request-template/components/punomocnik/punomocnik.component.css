@@ -7,32 +7,12 @@
   margin-bottom: 5px;
 }
 
-input[type="text"],
-textarea {
-  width: 30%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+.label-small {
+  font-size: 0.85em;
+  color: #555555;
 }
 
-textarea {
-  height: 100px;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-row label {
-  width: 30%;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.form-row input[type="text"] {
-  width: 65%;
-  display: inline-block;
+.value-large {
+  font-size: 1em;
+  font-weight: bold;
 }

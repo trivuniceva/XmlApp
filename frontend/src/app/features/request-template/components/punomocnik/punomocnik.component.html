@@ -1,4 +1,18 @@
 <div class="section">
   <p>3) Име, презиме и адреса пуномоћника, ако се пријава подноси преко пуномоћника:</p>
-  <app-author-info></app-author-info>
+  <ng-container *ngIf="punomocnikData">
+    <p><span class="label-small">Име:</span> <strong class="value-large">{{ punomocnikData.userInfo.name }}</strong></p>
+    <p><span class="label-small">Презиме:</span> <strong class="value-large">{{ punomocnikData.userInfo.lastname }}</strong></p>
+    <p><span class="label-small">Адреса:</span>
+      <strong class="value-large">
+        {{ punomocnikData.userInfo.street }}
+        {{ punomocnikData.userInfo.streetNum }},
+        {{ punomocnikData.userInfo.city }}
+      </strong>
+    </p>
+    <p><span class="label-small">Држављанство:</span> <strong class="value-large">{{ punomocnikData.userInfo.citizenship }}</strong></p>
+  </ng-container>
+  <ng-container *ngIf="!punomocnikData">
+    <p> / (Nema punomoćnika) </p>
+  </ng-container>
 </div>

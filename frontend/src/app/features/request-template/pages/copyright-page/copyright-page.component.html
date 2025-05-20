@@ -1,9 +1,23 @@
 <div class="container">
   <app-header></app-header>
-  <app-podnosilac></app-podnosilac>
+<!--  <app-podnosilac></app-podnosilac>-->
+
+  <app-podnosilac
+    *ngIf="fizickoPodnosilac || pravnoPodnosilac"
+    [fizickoPodnosilacData]="fizickoPodnosilac"
+    [pravnoPodnosilacData]="pravnoPodnosilac"
+  ></app-podnosilac>
+
   <app-pseudonim></app-pseudonim>
-  <app-punomocnik></app-punomocnik>
-  <app-autorsko-delo></app-autorsko-delo>
+
+  <div>
+    <app-punomocnik
+      [punomocnikData]="punomocnikPodnosilac"
+    ></app-punomocnik>
+
+  </div>
+
+<!--  <app-punomocnik></app-punomocnik>-->
   <app-prilozi></app-prilozi>
   <app-footer></app-footer>
 
