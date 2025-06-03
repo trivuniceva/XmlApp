@@ -1,9 +1,26 @@
 <div class="container">
   <app-header></app-header>
-  <app-podnosilac></app-podnosilac>
+<!--  <app-podnosilac></app-podnosilac>-->
+
+  <app-podnosilac
+
+    [fizickoPodnosilacData]="fizickoPodnosilac"
+    [pravnoPodnosilacData]="pravnoPodnosilac"
+  ></app-podnosilac>
+
   <app-pseudonim></app-pseudonim>
-  <app-punomocnik></app-punomocnik>
-  <app-autorsko-delo></app-autorsko-delo>
+
+  <div>
+    <app-punomocnik
+      [punomocnikData]="punomocnikPodnosilac"
+    ></app-punomocnik>
+
+  </div>
+
+<!--  <app-autorsko-delo-->
+<!--    [delo]="fizickoPodnosilac.copyrightInfo"-->
+<!--  ></app-autorsko-delo>-->
+
   <app-prilozi></app-prilozi>
   <app-footer></app-footer>
 

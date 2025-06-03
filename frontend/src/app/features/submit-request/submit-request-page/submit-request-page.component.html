@@ -39,7 +39,8 @@
 
       <app-confirmation-dialog
         [showPopup]="showPopup"
-
+        (popupClosed)="showPopup = false"
+        (confirmedSubmit)="sendDataToBackend()"
       ></app-confirmation-dialog>
     </div>
   </div>
