@@ -35,8 +35,9 @@ export class FormDataService {
   }
 
   submitFizickoRequest(data: FizickoPodnosilac) {
-    return this.http.post('/api/zahtev/fizicko', data);
+    return this.http.post('http://localhost:8080/api/zahtev/fizicko', data);
   }
+
 
   submitPravnoRequest(data: PravnoPodnosilac) {
     return this.http.post('/api/zahtev/pravno', data);

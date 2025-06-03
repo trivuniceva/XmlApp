@@ -212,6 +212,4 @@ export class SubmitRequestPageComponent {
       console.warn("Nema podataka za slanje.");
     }
   }
-
-
 }
