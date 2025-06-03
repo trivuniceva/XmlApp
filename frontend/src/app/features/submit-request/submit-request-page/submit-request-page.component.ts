@@ -172,11 +172,46 @@ export class SubmitRequestPageComponent {
     if (this.pravnoFormData) {
       console.log("Podaci pravnog lica za submit:", this.pravnoFormData);
     } else if (this.punomocnikFormData) {
-      console.log(this.punomocnikFormData);
+      console.log("Podaci punomicnika za submit:", this.punomocnikFormData);
     } else if (this.fizickoFormData) {
       console.log("Finalni podaci za fizicko lice:", this.fizickoFormData);
     }
 
     this.showPopup = true;
   }
+
+  sendDataToBackend() {
+    if (this.pravnoFormData) {
+      this.formDataService.submitPravnoRequest(this.pravnoFormData).subscribe({
+        next: (response) => {
+          console.log("Zahtev za pravno lice uspešno poslat!", response);
+        },
+        error: (error) => {
+          console.error("Greška pri slanju zahteva za pravno lice", error);
+        }
+      });
+    } else if (this.punomocnikFormData) {
+      this.formDataService.submitPunomocnikRequest(this.punomocnikFormData).subscribe({
+        next: (response) => {
+          console.log("Zahtev za punomoćnika uspešno poslat!", response);
+        },
+        error: (error) => {
+          console.error("Greška pri slanju zahteva za punomoćnika", error);
+        }
+      });
+    } else if (this.fizickoFormData) {
+      this.formDataService.submitFizickoRequest(this.fizickoFormData).subscribe({
+        next: (response) => {
+          console.log("Zahtev za fizičko lice uspešno poslat!", response);
+        },
+        error: (error) => {
+          console.error("Greška pri slanju zahteva za fizičko lice", error);
+        }
+      });
+    } else {
+      console.warn("Nema podataka za slanje.");
+    }
+  }
+
+
 }

@@ -17,7 +17,7 @@ import {CopyrightPageComponent} from '../../../request-template/pages/copyright-
 export class ConfirmationDialogComponent {
   @Input() showPopup: boolean = false;
   @Output() popupClosed = new EventEmitter<void>();
-
+  @Output() confirmedSubmit = new EventEmitter<void>();
 
   closePopup() {
     console.log('Popup closed');
@@ -27,6 +27,9 @@ export class ConfirmationDialogComponent {
   }
 
   submitFinalRequest() {
-
+    console.log('Sending final request...');
+    this.confirmedSubmit.emit();
+    this.showPopup = false;
+    this.popupClosed.emit();
   }
 }

@@ -3,11 +3,15 @@ import {BehaviorSubject} from 'rxjs';
 import {FizickoPodnosilac} from '../../model/FizickoPodnosilac';
 import {PravnoPodnosilac} from '../../model/PravnoPodnosilac';
 import {PunomocnikPodnosilac} from '../../model/PunomocnikPodnosilac';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormDataService {
+
+  constructor(private http: HttpClient) {
+  }
 
   private fizickoFormDataSubject = new BehaviorSubject<FizickoPodnosilac | null>(null);
   fizickoFormData$ = this.fizickoFormDataSubject.asObservable();
@@ -29,4 +33,17 @@ export class FormDataService {
   setPunomocnikFormData(data: PunomocnikPodnosilac) {
     this.punomocnikFormDataSubject.next(data);
   }
+
+  submitFizickoRequest(data: FizickoPodnosilac) {
+    return this.http.post('/api/zahtev/fizicko', data);
+  }
+
+  submitPravnoRequest(data: PravnoPodnosilac) {
+    return this.http.post('/api/zahtev/pravno', data);
+  }
+
+  submitPunomocnikRequest(data: PunomocnikPodnosilac) {
+    return this.http.post('/api/zahtev/punomocnik', data);
+  }
+
 }

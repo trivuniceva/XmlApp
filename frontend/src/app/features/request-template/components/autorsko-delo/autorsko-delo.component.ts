@@ -24,6 +24,6 @@ export class AutorskoDeloComponent {
     otherRecordFormat?: string;
     isAdaptation: boolean | null;
     sourceTitle?: string;
-    sourceAuthorInfo?: any; // Ili AuthorInfo ako planiraš detaljnije da ga prikazuješ
+    sourceAuthorInfo?: any;
   };
 }
